@@ -53,7 +53,6 @@ sections:
     title: Functions
   - file: chapters/essentials/plotting
     title: Plotting
-
 - file: chapters/Finance/IntrotoReturns
   title: Introduction to Asset Returns
   sections:
@@ -70,7 +69,6 @@ sections:
   sections:
     - file: chapters/scientific/linear_algebra1
       title: Linear Algebra Review
-
 - file: chapters/Finance/CapitalAllocationI
   title: Capital Allocation 
 - file: chapters/Finance/FactorModelEstimation
@@ -82,8 +80,6 @@ sections:
       title: Expected Returns Timing
     - file: chapters/Finance/Volatilitytiming
       title: Volatility Timing
-      
-
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
   sections:
@@ -93,7 +89,6 @@ sections:
       title: An overview of factors
     - file: chapters/Finance/InterpretingFactorModels
       title: Interpreting Factor Models
-
 - file: chapters/Finance/CapitalAllocationII
   title: Capital Allocation II 
 - file: chapters/Finance/Performance_evaluation
