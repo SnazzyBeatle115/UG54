@@ -91,6 +91,8 @@ sections:
       title: Momentum factor
     - file: chapters/Finance/Factors
       title: An overview of factors
+    - file: chapters/Finance/InterpretingFactorModels
+      title: Interpreting Factor Models
 
 - file: chapters/Finance/CapitalAllocationII
   title: Capital Allocation II 
