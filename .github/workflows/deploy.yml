@@ -85,18 +85,37 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        
+
     # Build the book
     - name: Build the book
       run: |
         jupyter-book build .
 
-    - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3.6.1
+    # - name: GitHub Pages action
+    #   uses: peaceiris/actions-gh-pages@v3.6.1
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: ./_build/html
+    
+    - name: Debug - show build output and fail if missing
+      run: |
+        echo "cwd: $(pwd)"
+        echo "_build contents:"
+        ls -la _build || true
+        echo "_build/html contents (if exists):"
+        ls -la _build/html || true
+        if [ ! -d "_build/html" ]; then
+          echo "::error file=_build/html::Directory _build/html not found. Build likely failed."
+          exit 1
+        fi
+    - name: Upload artifact for GitHub Pages
+      uses: actions/upload-pages-artifact@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_build/html
-        
+        path: _build/html
+
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4
+
     # - name: GitHub Pages action
     #   uses: peaceiris/actions-gh-pages@v3
     #   if: ${{ github.event_name == 'push' }}
