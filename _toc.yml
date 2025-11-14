@@ -1,4 +1,4 @@
-format: jb-book
+format: jb-article
 root: chapters/intro
 title: Introduction
 options:
