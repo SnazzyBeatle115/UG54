@@ -49,12 +49,12 @@ jobs:
           fi
 
       - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
           path: _build/html
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
         # no inputs required, this picks up the most recent uploaded artifact
 
 # name: deploy-book
