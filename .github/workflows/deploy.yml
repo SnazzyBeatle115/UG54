@@ -1,3 +1,62 @@
+name: deploy-book
+
+# Only run when the main branch changes
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy-book:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # install requirements if present
+          if [ -f requirements.txt ]; then pip install -r requirements.txt || true; fi
+          # make sure jupyter-book is available (explicit install as a fallback)
+          pip install jupyter-book
+
+      - name: Build the book
+        run: |
+          # Build the site (jupyter-book by default creates _build/html)
+          jupyter-book build .
+          echo "Build exit status: $?"
+      
+      - name: Debug - show build output
+        run: |
+          echo "cwd: $(pwd)"
+          echo "_build contents:"
+          ls -la _build || true
+          echo "_build/html contents (if exists):"
+          ls -la _build/html || true
+          # fail if _build/html missing so we don't attempt to publish an empty dir
+          if [ ! -d "_build/html" ]; then
+            echo "::error file=_build/html::Directory _build/html not found. Build likely failed."
+            exit 1
+          fi
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: _build/html
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
+        # no inputs required, this picks up the most recent uploaded artifact
+
 # name: deploy-book
 
 # # Only run this when the main branch changes
@@ -27,13 +86,16 @@
 #       run: |
 #         pip install -r requirements.txt
 
+
+
+    
 #     # Build the book
 #     - name: Build the book
 #       run: |
 #         jupyter-book build .
 
 #     - name: GitHub Pages action
-#       uses: peaceiris/actions-gh-pages@v4
+#       uses: peaceiris/actions-gh-pages@v3.6.1
 #       with:
 #         github_token: ${{ secrets.GITHUB_TOKEN }}
 #         publish_dir: ./_build/html
@@ -45,51 +107,3 @@
 #     #     github_token: ${{ secrets.GITHUB_TOKEN }}
 #     #     publish_branch: gh-pages
 #     #     publish_dir: ./_build/html
-
-name: deploy-book
-
-# Only run this when the main branch changes
-on:
-  push:
-    branches:
-    - main
-
-  pull_request:
-    branches:
-    - main
-
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
-jobs:
-  deploy-book:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-
-    # Install dependencies
-    - name: Set up Python 3.10.19
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.10.19
-
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-
-    # Build the book
-    - name: Build the book
-      run: |
-        jupyter-book build .
-
-    - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3.6.1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_build/html
-        
-    # - name: GitHub Pages action
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   if: ${{ github.event_name == 'push' }}
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_branch: gh-pages
-    #     publish_dir: ./_build/html
