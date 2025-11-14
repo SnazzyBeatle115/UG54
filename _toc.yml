@@ -1,4 +1,4 @@
-format: jb-article
+format: jb-book
 root: chapters/intro
 title: Introduction
 options:
@@ -122,7 +122,4 @@ sections:
     title: Assignment 4
   - file: chapters/Assignments/Assignment5
     title: Assignment 5
-  # - file: chapters/Assignments/Final Project
-  #   title: Final Project
-  #
-  
+
