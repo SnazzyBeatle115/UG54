@@ -99,7 +99,6 @@ jobs:
 
     - name: Build the book
       run: |
-        python -m jupyter_book.cli build .
         jb build .
     
     # python -m jupyter_book.cli build .
