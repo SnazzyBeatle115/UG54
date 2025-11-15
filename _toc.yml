@@ -87,7 +87,6 @@ sections:
       title: Momentum factor
     - file: chapters/Finance/Factors
       title: An overview of factors
-
 - file: chapters/Finance/CapitalAllocationII
   title: Capital Allocation II 
 - file: chapters/Finance/Performance_evaluation
@@ -121,5 +120,5 @@ sections:
   - file: chapters/Assignments/Assignment4
     title: Assignment 4
   - file: chapters/Assignments/Assignment5
-    title: Assignment 5
+    title: Assignment5
 
