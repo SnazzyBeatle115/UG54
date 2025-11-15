@@ -64,17 +64,14 @@ on:
   push:
     branches:
     - main
-
   pull_request:
     branches:
     - main
-
-  permissions:
-    id-token: write
-    pages: write
-    contents: read
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
+  permissions:
+  id-token: write
+  contents: read
   deploy-book:
     runs-on: ubuntu-latest
     steps:
