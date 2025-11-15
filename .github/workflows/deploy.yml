@@ -70,8 +70,9 @@ on:
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   permissions:
-  id-token: write
-  contents: read
+    id-token: write
+    contents: read
+    
   deploy-book:
     runs-on: ubuntu-latest
     steps:
