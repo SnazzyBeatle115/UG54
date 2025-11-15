@@ -59,81 +59,57 @@
 
 name: deploy-book
 
-# Only run this when the main branch changes
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     branches:
-    - main
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
-jobs:
-  # permissions:
-  #   id-token: write
-  #   contents: read
+      - main
 
+# Required permissions for actions/deploy-pages (id-token) and uploading pages artifact
+permissions:
+  id-token: write
+  contents: read
+  pages: write
+
+jobs:
   deploy-book:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-    # Install dependencies
-    - name: Set up Python 3.10.19
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.10.19
+      - name: Set up Python 3.10.19
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10.19'
 
-    # - name: Install dependencies
-    #   run: |
-    #     pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install jupyter-book==1.0.4.post1
+          python -m pip install -r requirements.txt
 
-    # Build the book
-    # - name: Build the book
-    #   run: |
-    #     jupyter-book build .
+      - name: Build the book
+        run: |
+          jb build .
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install jupyter-book==1.0.4.post1
-        python -m pip install -r requirements.txt
+      - name: Debug - show build output and fail if missing
+        run: |
+          echo "cwd: $(pwd)"
+          echo "_build contents:"
+          ls -la _build || true
+          echo "_build/html contents (if exists):"
+          ls -la _build/html || true
+          if [ ! -d "_build/html" ]; then
+            echo "::error file=_build/html::Directory _build/html not found. Build likely failed."
+            exit 1
+          fi
 
-    - name: Build the book
-      run: |
-        jb build .
-    
-    # python -m jupyter_book.cli build .
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _build/html
 
-    # - name: GitHub Pages action
-    #   uses: peaceiris/actions-gh-pages@v3.6.1
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: ./_build/html
-    
-    - name: Debug - show build output and fail if missing
-      run: |
-        echo "cwd: $(pwd)"
-        echo "_build contents:"
-        ls -la _build || true
-        echo "_build/html contents (if exists):"
-        ls -la _build/html || true
-        if [ ! -d "_build/html" ]; then
-          echo "::error file=_build/html::Directory _build/html not found. Build likely failed."
-          exit 1
-        fi
-    - name: Upload artifact for GitHub Pages
-      uses: actions/upload-pages-artifact@v4
-      with:
-        path: _build/html
-
-    - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
-
-    # - name: GitHub Pages action
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   if: ${{ github.event_name == 'push' }}
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_branch: gh-pages
-    #     publish_dir: ./_build/html
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
