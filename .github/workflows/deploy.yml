@@ -68,10 +68,10 @@ on:
       - main
 
 # Required permissions for actions/deploy-pages (id-token) and uploading pages artifact
-permissions:
-  id-token: write
-  contents: read
-  pages: write
+# permissions:
+#   id-token: write
+#   contents: read
+#   pages: write
 
 jobs:
   deploy-book:
