@@ -104,7 +104,7 @@ sections:
   title: Liquidity and Trading Cost Management
 - file: chapters/Finance/LeverageandShorting
   title: Leverage, Shorting, and Limits to Arbitrage
-- file: chapters/Finance/GenAIandLLMsinFinance
+- file: chapters/Finance/LLMs
   title: Gen AI and LLMs in Finance
 - file: chapters/additional/additional
   title: Additional Statistics Material
