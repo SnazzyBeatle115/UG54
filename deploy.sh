@@ -15,6 +15,7 @@ set -e
 # Configuration
 MIRROR_REPO="../DDI"
 BUILD_DIR="_build/html"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Colors for output
 RED='\033[0;31m'
@@ -22,8 +23,13 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# Activate venv if it exists
+if [ -d "$SCRIPT_DIR/.venv" ]; then
+    source "$SCRIPT_DIR/.venv/bin/activate"
+fi
+
 echo -e "${YELLOW}📚 Building Jupyter Book...${NC}"
-jupyter-book build .
+jupyter-book build "$SCRIPT_DIR"
 
 # Check if build succeeded
 if [ ! -d "$BUILD_DIR" ]; then

@@ -1,4 +1,5 @@
 jupyter-book
+sphinx-external-toc==1.0.1
 numpy
 pandas
 scipy
