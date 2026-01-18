@@ -69,6 +69,7 @@ on:
     branches:
     - main
 
+
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   deploy-book:
@@ -96,7 +97,9 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install jupyter-book==1.0.4.post1
         python -m pip install -r requirements.txt
-
+    
+    - name: Clean build cache
+      run: jb clean . 
     - name: Build the book
       run: |
         jb build .
