@@ -60,8 +60,6 @@ sections:
     title: The Choice of Frequency and Annualization of Returns
   - file: chapters/Finance/UsingAPI
     title: Data APIs
-#  - file: chapters/scientific/randomness1
-#    title: Modeling randomness
 - file: chapters/Finance/FactorModels
   title: Factor Models
 - file: chapters/Finance/PortfolioMath
