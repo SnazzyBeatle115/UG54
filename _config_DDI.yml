@@ -1,5 +1,5 @@
 #######################################################################################
-# Book settings
+# Book settings - DDI Version (local deploy)
 title: Data Driven Investing with Python
 author: Alan Moreira
 email: ''
@@ -21,7 +21,7 @@ html:
   favicon                   : "figuremain2.jpg"  # A path to a favicon image
   navbar_number_sections    : True  # Add a number to each section in your left navbar
   home_page_in_navbar       : false  # Whether to include your home page in the left Navigation Bar
-  baseurl                   : "https://amoreira2.github.io/UG54/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  baseurl                   : "https://amoreira2.github.io/DDI/"  # DDI deployment URL
   use_repository_button     : true
   use_edit_page_button      : false
   use_issues_button         : true
@@ -34,7 +34,7 @@ launch_buttons:
   colab_url              : "https://colab.research.google.com" # The URL of the BinderHub (e.g., https://mybinder.org)
 
 repository:
-  url                       : https://github.com/amoreira2/UG54  # The URL to your book's repository
+  url                       : https://github.com/amoreira2/DDI  # DDI repository
   branch                    : main  # Which branch of the repository should be used when creating links
 
 sphinx:
@@ -45,4 +45,3 @@ sphinx:
         - remove-cell
       remove_all_outputs_tags:
         - remove-cell-output
-

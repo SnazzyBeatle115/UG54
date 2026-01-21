@@ -28,8 +28,11 @@ if [ -d "$SCRIPT_DIR/.venv" ]; then
     source "$SCRIPT_DIR/.venv/bin/activate"
 fi
 
-echo -e "${YELLOW}📚 Building Jupyter Book...${NC}"
-jupyter-book build "$SCRIPT_DIR"
+echo -e "${YELLOW}🧹 Cleaning build cache...${NC}"
+jupyter-book clean "$SCRIPT_DIR" --all
+
+echo -e "${YELLOW}📚 Building Jupyter Book (DDI version)...${NC}"
+jupyter-book build "$SCRIPT_DIR" --toc "$SCRIPT_DIR/_toc_DDI.yml" --config "$SCRIPT_DIR/_config_DDI.yml"
 
 # Check if build succeeded
 if [ ! -d "$BUILD_DIR" ]; then
