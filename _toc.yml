@@ -63,17 +63,17 @@ sections:
 - file: chapters/Finance/Timing_c
   title: Timing Strategies
   sections:
-    - file: chapters/Finance/MarketTiming_c
-      title: Expected Returns Timing
-    - file: chapters/Finance/Volatilitytiming_c
-      title: Volatility Timing
+  - file: chapters/Finance/MarketTiming_c
+    title: Expected Returns Timing
+  - file: chapters/Finance/Volatilitytiming_c
+    title: Volatility Timing
 - file: chapters/Finance/FactorModels_c
   title: Factor Models
 - file: chapters/Finance/PortfolioMath_c
   title: Portfolios
   sections:
-    - file: chapters/scientific/linear_algebra1_c
-      title: Linear Algebra Review
+  - file: chapters/scientific/linear_algebra1_c
+    title: Linear Algebra Review
 - file: chapters/Finance/CapitalAllocationI
   title: Capital Allocation 
 - file: chapters/Finance/FactorModelEstimation
@@ -81,10 +81,10 @@ sections:
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
   sections:
-    - file: chapters/Finance/Momentum
-      title: Momentum factor
-    - file: chapters/Finance/Factors
-      title: An overview of factors
+  - file: chapters/Finance/Momentum
+    title: Momentum factor
+  - file: chapters/Finance/Factors
+    title: An overview of factors
 - file: chapters/Finance/CapitalAllocationII
   title: Capital Allocation II 
 - file: chapters/Finance/Performance_evaluation

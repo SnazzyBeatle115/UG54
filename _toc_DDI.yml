@@ -81,10 +81,10 @@ sections:
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
   sections:
-  - file: chapters/Finance/Momentum
-    title: Momentum factor
-  - file: chapters/Finance/Factors
-    title: An overview of factors
+    - file: chapters/Finance/Momentum
+      title: Momentum factor
+    - file: chapters/Finance/Factors
+      title: An overview of factors
 - file: chapters/Finance/CapitalAllocationII
   title: Capital Allocation II 
 - file: chapters/Finance/Performance_evaluation
@@ -94,8 +94,8 @@ sections:
 - file: chapters/Finance/MultiFactorModels
   title: Multi Factor Models
   sections:
-  - file: chapters/Finance/InterpretingFactorModels
-    title: Interpreting Factor Models
+    - file: chapters/Finance/InterpretingFactorModels
+      title: Interpreting Factor Models
 - file: chapters/Finance/RiskManagement
   title: Risk Management
 - file: chapters/Finance/TradingCosts
@@ -119,3 +119,4 @@ sections:
   #   title: Assignment 4
   # - file: chapters/Assignments/Assignment5
   #   title: Assignment5
+
