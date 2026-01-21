@@ -56,9 +56,9 @@ sections:
 - file: chapters/Finance/IntrotoReturns_c
   title: Introduction to Asset Returns
   sections:
-  - file: chapters/Finance/TheChoiceofFrequency
+  - file: chapters/Finance/TheChoiceofFrequency_c
     title: The Choice of Frequency and Annualization of Returns
-  - file: chapters/Finance/UsingAPI
+  - file: chapters/Finance/UsingAPI_c
     title: Data APIs
 - file: chapters/Finance/Timing_c
   title: Timing Strategies
