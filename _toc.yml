@@ -53,31 +53,31 @@ sections:
     title: Functions
   - file: chapters/essentials/plotting
     title: Plotting
-- file: chapters/Finance/IntrotoReturns
+- file: chapters/Finance/IntrotoReturns_c
   title: Introduction to Asset Returns
   sections:
   - file: chapters/Finance/TheChoiceofFrequency
     title: The Choice of Frequency and Annualization of Returns
   - file: chapters/Finance/UsingAPI
     title: Data APIs
-- file: chapters/Finance/FactorModels
+- file: chapters/Finance/Timing_c
+  title: Timing Strategies
+  sections:
+    - file: chapters/Finance/MarketTiming_c
+      title: Expected Returns Timing
+    - file: chapters/Finance/Volatilitytiming_c
+      title: Volatility Timing
+- file: chapters/Finance/FactorModels_c
   title: Factor Models
-- file: chapters/Finance/PortfolioMath
+- file: chapters/Finance/PortfolioMath_c
   title: Portfolios
   sections:
-    - file: chapters/scientific/linear_algebra1
+    - file: chapters/scientific/linear_algebra1_c
       title: Linear Algebra Review
 - file: chapters/Finance/CapitalAllocationI
   title: Capital Allocation 
 - file: chapters/Finance/FactorModelEstimation
   title: Factor Model Estimation
-- file: chapters/Finance/Timing
-  title: Timing Strategies
-  sections:
-    - file: chapters/Finance/MarketTiming
-      title: Expected Returns Timing
-    - file: chapters/Finance/Volatilitytiming
-      title: Volatility Timing
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
   sections:
